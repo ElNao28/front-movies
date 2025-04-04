@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     }),
     provideHttpClient(),
     MessageService,
+    RouterModule
   ],
   bootstrap: [AppComponent],
 })
