@@ -1,0 +1,32 @@
+.login {
+  background-image: url("/images/font-login.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.form {
+  background-color: rgba(0, 0, 0, 0.521);
+}
+.item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.item-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #ffffff;
+}
+.item-form input:focus {
+  outline: none;
+  border: 1px solid rgb(33, 129, 255);
+}
+.buttons-login {
+  transition: 0.3s;
+}
+.buttons-login:hover {
+  background-color: white;
+  color: black;
+}
