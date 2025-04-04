@@ -14,4 +14,7 @@ export class AuthService {
   public authUser(userData: any): Observable<Auth> {
     return this.http.post<Auth>(`${this.urlApi}auth`, userData);
   }
+  public setTokenInLocalStorage(token: string): void {
+    localStorage.setItem('token', token);
+  }
 }
