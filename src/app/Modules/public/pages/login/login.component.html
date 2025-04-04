@@ -1,14 +1,14 @@
 <section class="login h-screen w-screen flex flex-col items-center justify-center p-20">
   <div class="form w-2/4 rounded-lg px-10 py-[3rem]">
     <h1 class="text-[2.4rem] font-bold mb-5 text-white">Inicio de sesion</h1>
-    <form class="text-white">
+    <form class="text-white" [formGroup]="loginForm" (submit)="loginUser()">
       <div class="item-form">
         <label for="username">Nombre de usuario</label>
-        <input type="text" id="username" name="username" required />
+        <input type="text" id="username" name="username" required  formControlName="username"/>
       </div>
       <div class="item-form">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" required />
+        <input type="password" id="password" name="password" required  formControlName="password"/>
       </div>
       <div class="flex gap-3 items-center justify-end mt-5">
         <button type="submit" class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold">Ingresar</button>
