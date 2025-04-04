@@ -22,7 +22,11 @@ export class LoginComponent {
   });
 
   public loginUser(): void {
-    if (this.loginForm.invalid) return;
+    if (this.loginForm.invalid) return this.messageService.add({
+      severity: 'info',
+      summary: 'Error',
+      detail: 'Por favor, complete los campos correctamente.',
+    })
     this.authService
       .authUser(this.loginForm.value)
       .pipe(map((resp) => resp.token))
