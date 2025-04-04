@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -13,13 +14,17 @@ const routes: Routes = [
       import('./Modules/admon/admon.module').then((m) => m.AdmonModule),
   },
   {
+    path: '404',
+    component: NotFoundComponent,
+  },
+  {
     path: '',
     redirectTo: 'public',
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: 'public',
+    redirectTo: '404',
     pathMatch: 'full',
   },
 ];
