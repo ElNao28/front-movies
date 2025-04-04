@@ -4,11 +4,11 @@
     <form class="text-white" [formGroup]="loginForm" (submit)="loginUser()">
       <div class="item-form">
         <label for="username">Nombre de usuario</label>
-        <input type="text" id="username" name="username" required  formControlName="username"/>
+        <input type="text" id="username" name="username" placeholder="moviesFree" required  formControlName="username"/>
       </div>
       <div class="item-form">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" required  formControlName="password"/>
+        <input type="password" id="password" name="password" placeholder="movies@example.com" required  formControlName="password"/>
       </div>
       <div class="flex gap-3 items-center justify-end mt-5">
         <button type="submit" class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold">Ingresar</button>
