@@ -1,7 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { MessageService } from 'primeng/api';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
 
 @Component({
@@ -22,10 +28,16 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.email]],
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
-    confirmPassword: ['', [Validators.required]],
+    passwordtwo: ['', [Validators.required]],
   });
 
   public registerNewUser(): void {
+    if (this.registerForm.invalid)
+      return this.messageService.add({
+        severity: 'info',
+        summary: 'Error',
+        detail: 'Por favor, complete los campos correctamente.',
+      });
     const { confirmPassword, ...sendData } = this.registerForm.value;
     this.userService.registerNewUser(sendData).subscribe({
       next: (resp) =>
@@ -36,5 +48,8 @@ export class RegisterComponent {
         }),
       error: (err) => this.handlerErrorService.handlerError(err),
     });
+  }
+  public getControl(path: string): AbstractControl {
+    return this.registerForm.controls[path];
   }
 }
