@@ -3,6 +3,7 @@ import { AuthService } from '../../../../shared/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent {
   constructor(
     private authService: AuthService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private handlerErrorService: HandlerErrorService
   ) {}
   private fb: FormBuilder = inject(FormBuilder);
   public loginForm: FormGroup = this.fb.group({
@@ -22,11 +24,12 @@ export class LoginComponent {
   });
 
   public loginUser(): void {
-    if (this.loginForm.invalid) return this.messageService.add({
-      severity: 'info',
-      summary: 'Error',
-      detail: 'Por favor, complete los campos correctamente.',
-    })
+    if (this.loginForm.invalid)
+      return this.messageService.add({
+        severity: 'info',
+        summary: 'Error',
+        detail: 'Por favor, complete los campos correctamente.',
+      });
     this.authService
       .authUser(this.loginForm.value)
       .pipe(map((resp) => resp.token))
@@ -39,32 +42,7 @@ export class LoginComponent {
             detail: 'Bienvenido.',
           });
         },
-        error: (err) => {
-          const statusCode: number = err.status;
-          switch (statusCode) {
-            case 404:
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Usuario no registrado.',
-              });
-              break;
-            case 401:
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Contraseña incorrecta.',
-              });
-              break;
-            default:
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Ha ocurrido un error.',
-              });
-              break;
-          }
-        },
+        error: (err) => this.handlerErrorService.handlerError(err),
       });
   }
 }
