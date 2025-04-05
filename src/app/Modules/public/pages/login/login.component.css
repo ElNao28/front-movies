@@ -35,3 +35,7 @@
 .item-form input::placeholder{
   color: rgba(255, 255, 255, 0.397);
 }
+.button-cancel:hover{
+  background-color: red;
+  color: white;
+}
