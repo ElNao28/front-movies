@@ -1,22 +1,59 @@
-<section class="login h-screen w-screen flex flex-col items-center justify-center p-20">
+<section
+  class="login h-screen w-screen flex flex-col items-center justify-center p-20"
+>
   <div class="form w-2/5 rounded-lg px-10 py-[3rem]">
     <h1 class="text-[2.4rem] font-bold mb-5 text-white">Inicio de sesion</h1>
     <form class="text-white" [formGroup]="loginForm" (submit)="loginUser()">
       <div class="item-form">
         <label for="username">Nombre de usuario</label>
-        <input type="text" id="username" name="username" placeholder="moviesFree" required  formControlName="username"/>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="moviesFree"
+          required
+          formControlName="username"
+        />
+        <app-view-error-form
+          *ngIf="getControl('username').touched"
+          [controlForm]="getControl('username')"
+        />
       </div>
       <div class="item-form">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" placeholder="movies@example.com" required  formControlName="password"/>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="movies@example.com"
+          required
+          formControlName="password"
+        />
+        <app-view-error-form
+          *ngIf="getControl('password').touched"
+          [controlForm]="getControl('password')"
+        />
       </div>
       <div class="flex gap-3 items-center justify-end mt-5">
-        <button type="submit" class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold">Ingresar</button>
-        <button type="button" class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold" routerLink="/public/register">Registrarse</button>
+        <button
+          type="submit"
+          class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold"
+        >
+          Ingresar
+        </button>
+        <button
+          type="button"
+          class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold"
+          routerLink="/public/register"
+        >
+          Registrarse
+        </button>
       </div>
     </form>
     <div class="flex justify-end mt-2">
-      <a class="underline hover:text-gray-300" routerLink="/">Olvide mi contraseña</a>
+      <a class="underline hover:text-gray-300" routerLink="/"
+        >Olvide mi contraseña</a
+      >
     </div>
   </div>
 </section>

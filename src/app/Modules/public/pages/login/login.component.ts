@@ -1,6 +1,6 @@
 import { Component, ErrorHandler, inject } from '@angular/core';
 import { AuthService } from '../../../../shared/services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
@@ -44,5 +44,8 @@ export class LoginComponent {
         },
         error: (err) => this.handlerErrorService.handlerError(err),
       });
+  }
+  public getControl(path: string): AbstractControl {
+    return this.loginForm.controls[path];
   }
 }
