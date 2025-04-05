@@ -12,6 +12,7 @@
           name="username"
           placeholder="moviesFree"
           required
+          [ngClass]="{ 'cursor-no-drop': submitted }"
           formControlName="username"
         />
         <app-view-error-form
@@ -27,6 +28,7 @@
           name="password"
           placeholder="movies@example.com"
           required
+          [ngClass]="{ 'cursor-no-drop': submitted }"
           formControlName="password"
         />
         <app-view-error-form
@@ -38,12 +40,22 @@
         <button
           type="submit"
           class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold"
+          [ngClass]="{
+            'buttons-login cursor-pointer': !submitted,
+            'cursor-no-drop': submitted
+          }"
+          [disabled]="submitted"
         >
           Ingresar
         </button>
         <button
           type="button"
-          class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold"
+          class="buttons-login button-register border-yellow-300 border-2 cursor-pointer px-3 py-2 text-yellow-300 rounded-md font-bold"
+          [ngClass]="{
+            'buttons-login cursor-pointer': !submitted,
+            'cursor-no-drop': submitted
+          }"
+          [disabled]="submitted"
           routerLink="/public/register"
         >
           Registrarse
@@ -51,8 +63,15 @@
       </div>
     </form>
     <div class="flex justify-end mt-2">
-      <a class="underline hover:text-gray-300" routerLink="/"
-        >Olvide mi contraseña</a
+      <button
+        class="underline"
+        routerLink="/"
+        [ngClass]="{
+          'cursor-pointer hover:text-gray-300': !submitted,
+          'cursor-no-drop': submitted
+        }"
+        [disabled]="submitted"
+        >¿Has olvidado tu contraseña?</button
       >
     </div>
   </div>

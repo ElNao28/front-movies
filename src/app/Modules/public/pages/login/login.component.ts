@@ -1,6 +1,11 @@
 import { Component, ErrorHandler, inject } from '@angular/core';
 import { AuthService } from '../../../../shared/services/auth.service';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { map } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
@@ -22,6 +27,7 @@ export class LoginComponent {
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
+  public submitted: boolean = false;
 
   public loginUser(): void {
     if (this.loginForm.invalid)
@@ -30,6 +36,8 @@ export class LoginComponent {
         summary: 'Error',
         detail: 'Por favor, complete los campos correctamente.',
       });
+    this.submitted = true;
+    this.loginForm.disable();
     this.authService
       .authUser(this.loginForm.value)
       .pipe(map((resp) => resp.token))
@@ -42,7 +50,11 @@ export class LoginComponent {
             detail: 'Bienvenido.',
           });
         },
-        error: (err) => this.handlerErrorService.handlerError(err),
+        error: (err) => {
+          this.submitted = false;
+          this.loginForm.enable();
+          this.handlerErrorService.handlerError(err);
+        },
       });
   }
   public getControl(path: string): AbstractControl {

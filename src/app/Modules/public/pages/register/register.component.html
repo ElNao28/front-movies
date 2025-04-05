@@ -13,7 +13,7 @@
           type="email"
           id="email"
           name="email"
-          required
+          [ngClass]="{ 'cursor-no-drop': submitted }"
         />
         <app-view-error-form
           *ngIf="getControl('email').touched"
@@ -27,7 +27,7 @@
           type="text"
           id="username"
           name="username"
-          required
+          [ngClass]="{ 'cursor-no-drop': submitted }"
         />
         <app-view-error-form
           *ngIf="getControl('username').touched"
@@ -41,7 +41,7 @@
           type="password"
           id="password"
           name="password"
-          required
+          [ngClass]="{ 'cursor-no-drop': submitted }"
         />
         <app-view-error-form
           *ngIf="getControl('password').touched"
@@ -55,7 +55,7 @@
           type="password"
           id="passwordtwo"
           name="passwordtwo"
-          required
+          [ngClass]="{ 'cursor-no-drop': submitted }"
         />
         <app-view-error-form
           *ngIf="getControl('passwordtwo').touched"
@@ -65,14 +65,24 @@
       <div class="flex gap-3 items-center justify-end mt-5">
         <button
           type="submit"
-          class="buttons-login border-white border-2 cursor-pointer px-3 py-2 text-white rounded-md font-bold"
+          class="border-white border-2 px-3 py-2 text-white rounded-md font-bold"
+          [ngClass]="{
+            'buttons-login cursor-pointer': !submitted,
+            'cursor-no-drop': submitted
+          }"
+          [disabled]="submitted"
         >
           Registrarse
         </button>
         <button
           type="button"
-          class="button-cancel buttons-login border-red-500 border-2 cursor-pointer px-3 py-2 text-red-500 rounded-md font-bold"
+          class="border-red-500 border-2 px-3 py-2 text-red-500 rounded-md font-bold"
           routerLink="/public/login"
+          [ngClass]="{
+            'button-cancel buttons-login cursor-pointer': !submitted,
+            'cursor-no-drop': submitted
+          }"
+          [disabled]="submitted"
         >
           Cancelar
         </button>

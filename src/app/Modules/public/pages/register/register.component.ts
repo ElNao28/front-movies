@@ -5,10 +5,12 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
-  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
+import { AuthService } from '../../../../shared/services/auth.service';
+import { map, tap, timer } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -19,8 +21,10 @@ import { HandlerErrorService } from '../../../../shared/services/handler-error.s
 export class RegisterComponent {
   constructor(
     private userService: UserService,
+    private authService: AuthService,
     private messageService: MessageService,
-    private handlerErrorService: HandlerErrorService
+    private handlerErrorService: HandlerErrorService,
+    private router: Router
   ) {}
 
   private fb: FormBuilder = inject(FormBuilder);
@@ -30,7 +34,11 @@ export class RegisterComponent {
     password: ['', [Validators.required]],
     passwordtwo: ['', [Validators.required]],
   });
+  public submitted: boolean = false;
 
+  public getControl(path: string): AbstractControl {
+    return this.registerForm.controls[path];
+  }
   public registerNewUser(): void {
     if (this.registerForm.invalid)
       return this.messageService.add({
@@ -38,18 +46,35 @@ export class RegisterComponent {
         summary: 'Error',
         detail: 'Por favor, complete los campos correctamente.',
       });
-    const { confirmPassword, ...sendData } = this.registerForm.value;
+    this.submitted = true;
+    this.registerForm.disable();
+    const { passwordtwo, ...sendData } = this.registerForm.value;
     this.userService.registerNewUser(sendData).subscribe({
-      next: (resp) =>
+      next: (resp) => {
         this.messageService.add({
           severity: 'success',
           summary: 'Registro exitoso',
           detail: resp.message,
-        }),
-      error: (err) => this.handlerErrorService.handlerError(err),
+        });
+        setTimeout(() => {
+          this.loginNewUser(sendData.username, passwordtwo);
+        }, 500);
+      },
+      error: (err) => {
+        this.submitted = false;
+        this.registerForm.enable();
+        this.handlerErrorService.handlerError(err);
+      },
     });
   }
-  public getControl(path: string): AbstractControl {
-    return this.registerForm.controls[path];
+  private loginNewUser(username: string, password: string): void {
+    this.authService.authUser({ username, password }).subscribe({
+      next: (resp) => {
+        this.authService.setTokenInLocalStorage(resp.token);
+        this.router.navigate(['/home']);
+        this.submitted = false;
+      },
+      error: (err) => this.handlerErrorService.handlerError(err),
+    });
   }
 }

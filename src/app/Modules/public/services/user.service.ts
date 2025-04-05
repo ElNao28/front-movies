@@ -12,6 +12,6 @@ export class UserService {
   private apiUrl: string = environment.urlApi;
 
   public registerNewUser(user: any): Observable<RespCreateUser> {
-    return this.http.post<RespCreateUser>(`${this.apiUrl}/users`, user);
+    return this.http.post<RespCreateUser>(`${this.apiUrl}users`, user);
   }
 }
