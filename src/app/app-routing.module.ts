@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
+import { InvalidTokenComponent } from './shared/pages/invalid-token/invalid-token.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: '404',
     component: NotFoundComponent,
+  },
+  {
+    path: 'url-expired',
+    component: InvalidTokenComponent,
   },
   {
     path: '',

@@ -13,7 +13,8 @@ export const restoreTokenGuard: CanActivateFn = (route, state) => {
       return true;
     }),
     catchError(() => {
-      return of(router.parseUrl('/public/login'));
+      console.log("Token expirado")
+      return of(router.parseUrl('/url-expired'));
     })
   );
 };
