@@ -10,10 +10,13 @@ export const restoreTokenGuard: CanActivateFn = (route, state) => {
 
   return authService.checkValidityToken(token).pipe(
     map(() => {
+      route.data = {
+        token,
+      };
       return true;
     }),
     catchError(() => {
-      console.log("Token expirado")
+      console.log('Token expirado');
       return of(router.parseUrl('/url-expired'));
     })
   );

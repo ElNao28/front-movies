@@ -9,7 +9,6 @@ import {
 } from '@angular/forms';
 import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
 import { AuthService } from '../../../../shared/services/auth.service';
-import { map, tap, timer } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({

@@ -37,7 +37,7 @@ export class RecoverDialogComponent {
     const { email } = this.recoverForm.value;
     this.submitted = true;
     this.recoverForm.disable();
-    this.userService.recoverPassword(email).subscribe({
+    this.userService.sendEmailToRecoverPassword(email).subscribe({
       next: () => {
         this.messageService.add({
           severity: 'success',

@@ -10,6 +10,8 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 export class ViewErrorFormComponent {
   @Input()
   controlForm: any;
+  @Input()
+  colorText: string = 'text-red-500';
 
   public handlerErrorForm(): string | undefined {
     const error: ValidationErrors = this.controlForm.errors!;

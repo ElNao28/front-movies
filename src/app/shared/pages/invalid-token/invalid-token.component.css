@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Underdog&display=swap');
 section {
+  background-image: url('/images/expired.webp');
+  background-size: cover;
+  background-position: center;
   font-family: "Underdog", system-ui;
   font-weight: bold;
   font-style: normal;
