@@ -10,7 +10,12 @@ import { RecoverDialogComponent } from './components/recover-dialog/recover-dial
 import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, RecoverDialogComponent, RestorePasswordComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    RecoverDialogComponent,
+    RestorePasswordComponent,
+  ],
   imports: [
     CommonModule,
     PublicRoutingModule,
