@@ -7,9 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { RecoverDialogComponent } from './components/recover-dialog/recover-dialog.component';
+import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, RecoverDialogComponent],
+  declarations: [LoginComponent, RegisterComponent, RecoverDialogComponent, RestorePasswordComponent],
   imports: [
     CommonModule,
     PublicRoutingModule,

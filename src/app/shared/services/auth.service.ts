@@ -17,4 +17,7 @@ export class AuthService {
   public setTokenInLocalStorage(token: string): void {
     localStorage.setItem('token', token);
   }
+  public checkValidityToken(token: string) {
+    return this.http.post<Auth>(`${this.urlApi}verify-token`, { token });
+  }
 }
