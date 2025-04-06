@@ -5,10 +5,11 @@ import { ToastModule } from 'primeng/toast';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { ViewErrorFormComponent } from './components/view-error-form/view-error-form.component';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [NotFoundComponent, ViewErrorFormComponent],
-  imports: [CommonModule, ToastModule, RouterModule],
-  exports: [ToastModule, NotFoundComponent, ViewErrorFormComponent],
+  imports: [CommonModule, ToastModule, RouterModule,DialogModule],
+  exports: [ToastModule, DialogModule, NotFoundComponent, ViewErrorFormComponent],
   providers: [AuthService],
 })
 export class SharedModule {}

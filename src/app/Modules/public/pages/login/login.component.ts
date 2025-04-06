@@ -27,7 +27,9 @@ export class LoginComponent {
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
+
   public submitted: boolean = false;
+  public isRecoverPassword: boolean = false;
 
   public loginUser(): void {
     if (this.loginForm.invalid)
@@ -60,4 +62,8 @@ export class LoginComponent {
   public getControl(path: string): AbstractControl {
     return this.loginForm.controls[path];
   }
+  public openRecoverDialog(): void {
+    this.isRecoverPassword = true;
+  }
+
 }

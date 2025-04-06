@@ -14,4 +14,9 @@ export class UserService {
   public registerNewUser(user: any): Observable<RespCreateUser> {
     return this.http.post<RespCreateUser>(`${this.apiUrl}users`, user);
   }
+  public recoverPassword(email: string) {
+    return this.http.get(`${this.apiUrl}recover-password`, {
+      params: { email },
+    });
+  }
 }
