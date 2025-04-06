@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'restore-password/:token',
     component: RestorePasswordComponent,
-    // canActivate: [restoreTokenGuard],
+    canActivate: [restoreTokenGuard],
   },
   {
     path: '',
