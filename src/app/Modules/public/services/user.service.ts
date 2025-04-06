@@ -15,7 +15,7 @@ export class UserService {
     return this.http.post<RespCreateUser>(`${this.apiUrl}users`, user);
   }
   public recoverPassword(email: string) {
-    return this.http.get(`${this.apiUrl}recover-password`, {
+    return this.http.get(`${this.apiUrl}send-email`, {
       params: { email },
     });
   }
