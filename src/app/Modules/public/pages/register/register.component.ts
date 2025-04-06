@@ -5,12 +5,14 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Router } from '@angular/router';
-
+import { passwordMatchValidation } from '../../../../shared/services/validations.service';
 @Component({
   selector: 'app-register',
   standalone: false,
@@ -27,12 +29,17 @@ export class RegisterComponent {
   ) {}
 
   private fb: FormBuilder = inject(FormBuilder);
-  public registerForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-    passwordtwo: ['', [Validators.required]],
-  });
+  public registerForm: FormGroup = this.fb.group(
+    {
+      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      passwordtwo: ['', [Validators.required]],
+    },
+    {
+      validators: [passwordMatchValidation('password', 'passwordtwo')],
+    }
+  );
   public submitted: boolean = false;
 
   public getControl(path: string): AbstractControl {

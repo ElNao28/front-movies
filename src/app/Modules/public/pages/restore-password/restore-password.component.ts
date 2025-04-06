@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 import { map } from 'rxjs';
 import { HandlerErrorService } from '../../../../shared/services/handler-error.service';
 import { UserService } from '../../services/user.service';
+import { passwordMatchValidation } from '../../../../shared/services/validations.service';
 
 @Component({
   selector: 'app-restore-password',
@@ -35,7 +36,11 @@ export class RestorePasswordComponent implements OnInit {
   public restorePasswordForm: FormGroup = this.fb.group({
     password: ['', [Validators.required]],
     confirmPassword: ['', [Validators.required]],
-  });
+  },
+  {
+    validators: [passwordMatchValidation('password','confirmPassword')],
+  }
+);
 
   public getControl(path: string): AbstractControl {
     return this.restorePasswordForm.controls[path];
@@ -61,7 +66,7 @@ export class RestorePasswordComponent implements OnInit {
         });
         setTimeout(() => {
           this.router.navigate(['public/login']);
-        }, 1500);
+        }, 2000);
       },
       error: (error) => {
         this.restorePasswordForm.enable();

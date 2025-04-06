@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-view-error-form',
@@ -22,7 +22,11 @@ export class ViewErrorFormComponent {
       return 'Ingrese un email válido.';
     } else if (error['minlength']) {
       return 'La contraseña debe tener al menos 8 caracteres.';
-    } else {
+    }
+    else if(error['passwordMismatch']){
+      return 'Las contraseñas no coinciden.';
+    }
+     else {
       return '';
     }
   }
