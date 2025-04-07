@@ -5,7 +5,7 @@ import { InvalidTokenComponent } from './shared/pages/invalid-token/invalid-toke
 
 const routes: Routes = [
   {
-    path: 'public',
+    path: '',
     loadChildren: () =>
       import('./Modules/public/public.module').then((m) => m.PublicModule),
   },
@@ -21,11 +21,6 @@ const routes: Routes = [
   {
     path: 'url-expired',
     component: InvalidTokenComponent,
-  },
-  {
-    path: '',
-    redirectTo: 'public',
-    pathMatch: 'full',
   },
   {
     path: '**',

@@ -1,6 +1,7 @@
 .login {
-  background-image: url("/images/font-login.jpg");
+  background-image: url("/images/font-login.jpeg");
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
 }
 .form {

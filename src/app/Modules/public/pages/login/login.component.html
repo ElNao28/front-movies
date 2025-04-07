@@ -1,5 +1,5 @@
 <section
-  class="login h-screen w-screen flex flex-col items-center justify-center p-20"
+  class="login flex h-screen  items-center justify-center"
 >
   <div class="form w-2/5 rounded-lg px-10 py-[3rem]">
     <h1 class="text-[2.4rem] font-bold mb-5 text-white">Inicio de sesion</h1>
@@ -56,7 +56,7 @@
             'cursor-no-drop': submitted
           }"
           [disabled]="submitted"
-          routerLink="/public/register"
+          routerLink="/register"
         >
           Registrarse
         </button>
@@ -66,7 +66,6 @@
       <button
         class="underline"
         type="button"
-        routerLink="/"
         [ngClass]="{
           'cursor-pointer hover:text-gray-300': !submitted,
           'cursor-no-drop': submitted

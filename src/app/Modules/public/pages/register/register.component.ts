@@ -77,7 +77,7 @@ export class RegisterComponent {
     this.authService.authUser({ username, password }).subscribe({
       next: (resp) => {
         this.authService.setTokenInLocalStorage(resp.token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
         this.submitted = false;
       },
       error: (err) => this.handlerErrorService.handlerError(err),

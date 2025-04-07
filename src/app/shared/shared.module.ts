@@ -8,10 +8,25 @@ import { ViewErrorFormComponent } from './components/view-error-form/view-error-
 import { DialogModule } from 'primeng/dialog';
 import { InvalidTokenComponent } from './pages/invalid-token/invalid-token.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
-  declarations: [NotFoundComponent, ViewErrorFormComponent, InvalidTokenComponent, LoaderComponent],
-  imports: [CommonModule, ToastModule, RouterModule,DialogModule],
-  exports: [ToastModule, DialogModule, NotFoundComponent, ViewErrorFormComponent,InvalidTokenComponent,LoaderComponent],
+  declarations: [
+    NotFoundComponent,
+    ViewErrorFormComponent,
+    InvalidTokenComponent,
+    LoaderComponent,
+    NavbarComponent,
+  ],
+  imports: [CommonModule, ToastModule, RouterModule, DialogModule],
+  exports: [
+    ToastModule,
+    DialogModule,
+    NotFoundComponent,
+    ViewErrorFormComponent,
+    InvalidTokenComponent,
+    LoaderComponent,
+    NavbarComponent,
+  ],
   providers: [AuthService],
 })
 export class SharedModule {}

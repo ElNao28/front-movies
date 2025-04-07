@@ -65,7 +65,7 @@ export class RestorePasswordComponent implements OnInit {
           detail: 'Puedes iniciar sesión con tu nueva contraseña.',
         });
         setTimeout(() => {
-          this.router.navigate(['public/login']);
+          this.router.navigate(['/login']);
         }, 2000);
       },
       error: (error) => {
