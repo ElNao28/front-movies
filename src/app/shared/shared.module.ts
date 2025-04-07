@@ -7,10 +7,11 @@ import { RouterModule } from '@angular/router';
 import { ViewErrorFormComponent } from './components/view-error-form/view-error-form.component';
 import { DialogModule } from 'primeng/dialog';
 import { InvalidTokenComponent } from './pages/invalid-token/invalid-token.component';
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
-  declarations: [NotFoundComponent, ViewErrorFormComponent, InvalidTokenComponent],
+  declarations: [NotFoundComponent, ViewErrorFormComponent, InvalidTokenComponent, LoaderComponent],
   imports: [CommonModule, ToastModule, RouterModule,DialogModule],
-  exports: [ToastModule, DialogModule, NotFoundComponent, ViewErrorFormComponent,InvalidTokenComponent],
+  exports: [ToastModule, DialogModule, NotFoundComponent, ViewErrorFormComponent,InvalidTokenComponent,LoaderComponent],
   providers: [AuthService],
 })
 export class SharedModule {}
