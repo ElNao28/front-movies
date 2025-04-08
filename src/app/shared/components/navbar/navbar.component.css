@@ -11,3 +11,10 @@ nav {
 nav li:hover{
   background-color: rgba(255, 255, 255, 0.363);
 }
+input::placeholder{
+  color: rgb(196, 196, 196);
+}
+input:focus{
+  border: none;
+  outline: none;
+}

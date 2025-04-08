@@ -1,10 +1,11 @@
 <nav class="px-20 py-4 bg-black flex items-center justify-between">
-  <a class="w-[10rem]" routerLink="/">
-    <img src="/images/logo.png" alt="animex" />
-  </a>
+
   <div class="flex gap-10 items-center">
+    <a class="w-[10rem]" routerLink="/">
+      <img src="/images/logo.png" alt="animex" />
+    </a>
     <ul class="flex gap-3 text-lg">
-      <li class="bg-red-500">Inicio</li>
+      <li>Inicio</li>
       <li>Direcorio</li>
       <li>En emision</li>
       <li>Calendario</li>
@@ -18,11 +19,23 @@
         type="text"
         placeholder="Buscar..."
       />
-      <button class="bg-red-600 p-2 rounded-r-md cursor-pointer" type="button">Buscar</button>
+      <button class="bg-white p-2 rounded-r-md cursor-pointer" type="button">
+        <i class="pi pi-search text-black"></i>
+      </button>
     </form>
     <div class="flex gap-2">
-      <button routerLink="/login" class="bg-white p-2 rounded-md text-black cursor-pointer hover:bg-gray-200">Iniciar Sesión</button>
-      <button routerLink="/register" class="bg-red-600 p-2 rounded-md text-white cursor-pointer hover:bg-red-500">Registrarse</button>
+      <button
+        routerLink="/login"
+        class="bg-white p-2 rounded-md text-black cursor-pointer hover:bg-gray-200"
+      >
+        Iniciar Sesión
+      </button>
+      <button
+        routerLink="/register"
+        class="bg-red-600 p-2 rounded-md text-white cursor-pointer hover:bg-red-500"
+      >
+        Registrarse
+      </button>
     </div>
   </div>
 </nav>
