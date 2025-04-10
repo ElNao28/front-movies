@@ -10,7 +10,7 @@ nav {
   transition: 0.5s;
  }
 nav li:hover{
-  background-color: red;
+  background-color: rgb(255, 110, 110);
 }
 input::placeholder{
   color: rgb(196, 196, 196);

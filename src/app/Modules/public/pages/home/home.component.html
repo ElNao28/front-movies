@@ -1,1 +1,45 @@
-<p>home works!</p>
+<div class="slider">
+  <div class="btn-direction flex justify-between w-full px-10">
+    <button
+      class="cursor-pointer bg-red-500 p-2 rounded-sm"
+      (click)="beforeImage()"
+    >
+      <span class="pi pi-chevron-left"></span>
+    </button>
+    <button
+      class="cursor-pointer bg-red-500 p-2 rounded-sm"
+      (click)="nextImage()"
+    >
+      <span class="pi pi-chevron-right"></span>
+    </button>
+  </div>
+
+  <div class="images-slider" id="slider">
+    <div class="img-slider relative" *ngFor="let image of images">
+      <div class="absolute top-1/4 left-1/12 z-10 w-2/3">
+        <h2 class="text-5xl font-bold mb-5 w-2/3">
+          {{ image.title }}
+        </h2>
+        <p class="text-xl w-2/3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+          repudiandae quas vero, beatae sint voluptatum ullam perspiciatis dolor
+          voluptatem, delectus rerum! Hic aut commodi quos natus culpa
+          perspiciatis sit aliquid. Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Saepe facere dolorem molestiae, consequuntur sequi
+          beatae explicabo deserunt, aperiam voluptatum fugiat neque harum
+          provident quos aspernatur! Ad nihil recusandae aliquid inventore.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla
+          tenetur tempora sit atque suscipit laudantium culpa pariatur
+          repudiandae veniam ipsa impedit totam et, magnam quibusdam voluptate
+          hic, vel debitis.
+        </p>
+        <button
+          class="bg-red-500 text-white rounded-md font-bold py-2 px-4 mt-5 cursor-pointer hover:bg-red-600 transition"
+        >
+          Ver ahora
+        </button>
+      </div>
+      <img [src]="image.url" alt="ola" />
+    </div>
+  </div>
+</div>

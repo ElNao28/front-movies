@@ -1,0 +1,23 @@
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: 80vh;
+}
+.btn-direction {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+}
+.images-slider {
+  display: flex;
+  width: auto;
+  transition: 0.8s ease-in-out;
+}
+
+.img-slider {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  flex-shrink: 0;
+}
